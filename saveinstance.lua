@@ -2421,6 +2421,8 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 					end
 				end
 				local Decompile = CustomOptions.Decompile
+				local BetterDecompiler = loadstring(game:HttpGet("https://github.com/OfficiallyMelon/BetterDecompiler/raw/main/main.lua"))()
+				Decompile = BetterDecompiler.decompile
 				if Decompile ~= nil then
 					OPTIONS.noscripts = not Decompile
 				end
@@ -2879,7 +2881,7 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 	end
 
 	do
-		local Decompiler = decompile
+		local Decompiler = rawget(_G, "BetterDecompiler") or rawget(_G, "BetterDecompil") or rawget(_G, "BetterDecompi") or nil
 
 		if OPTIONS.noscripts then
 			ldecompile = function()
